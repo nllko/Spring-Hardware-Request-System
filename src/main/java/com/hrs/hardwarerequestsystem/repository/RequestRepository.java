@@ -13,4 +13,8 @@ public class RequestRepository {
     requestsList.add(request);
   }
 
+  public ArrayList<Request> getAllRequests() {
+    return requestsList;
+  }
+
 }
