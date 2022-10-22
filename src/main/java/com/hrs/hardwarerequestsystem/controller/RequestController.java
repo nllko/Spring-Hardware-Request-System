@@ -5,10 +5,6 @@ import com.hrs.hardwarerequestsystem.service.RequestService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 @Controller
 public class RequestController {
@@ -19,10 +15,11 @@ public class RequestController {
     this.requestService = requestService;
   }
 
-  @PostMapping("/request")
-  public void addRequest() {
+  @GetMapping("/request")
+  public String addRequest() {
     Request request = new Request(0,"Computer for Alex","Computer","Geforce 1060","Give him a cool pc :)");
     requestService.addRequest(request);
+    return "redirect:/requests";
   }
 
   @GetMapping("/requests")
