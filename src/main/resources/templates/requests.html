@@ -30,6 +30,7 @@
     <th scope="col">Parameters</th>
     <th scope="col">Description</th>
     <th scope="col">Created At</th>
+    <th scope="col">Actions</th>
   </tr>
   </thead>
   <tbody>
@@ -39,6 +40,9 @@
     <td th:text="${request.parameters}"></td>
     <td th:text="${request.description}"></td>
     <td th:text="${#temporals.format(request.createdAt, 'dd/MMM/yyyy HH:mm')}"></td>
+    <td>
+      <a th:href="@{/requests/edit/{id}(id=${request.id})}" class = "btn btn-primary">✏</a>
+    </td>
   </tr>
   </tbody>
 </table>

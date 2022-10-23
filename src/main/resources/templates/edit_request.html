@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Create new request</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+        crossorigin="anonymous">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand">Hardware Request System</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      <a class="nav-item nav-link" th:href="@{/requests}">Show all requests</a>
+      <a class="nav-item nav-link active" th:href="@{/requests/new}">Create new request <span class="sr-only">(current)</span></a>
+    </div>
+  </div>
+</nav>
+
+<br>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+      <h3 class="card-title">Update request</h3>
+      <div class="card-body">
+        <form th:action="@{/requests/{id} (id=${request.id})}" th:object="${request}" method="post">
+          <div class="form-group">
+            <label>Request name</label>
+            <input
+                type="text"
+                name="name"
+                th:field="*{name}"
+                class="form-control"
+                placeholder="Enter the request name">
+          </div>
+
+          <div class="form=group">
+            <label>Type of hardware</label>
+            <select class="form-control" th:field="*{type}">
+              <option value="PC">PC</option>
+              <option value="Laptop">Laptop</option>
+              <option value="Webcam">Webcam</option>
+              <option value="Mouse">Mouse</option>
+              <option value="Keyboard">Keyboard</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Hardware parameters</label>
+            <input
+                type="text"
+                name="parameters"
+                th:field="*{parameters}"
+                class="form-control"
+                placeholder="Enter the parameters">
+          </div>
+
+          <div class="form-group">
+            <label>Description</label>
+            <input
+                type="text"
+                name="description"
+                th:field="*{description}"
+                class="form-control"
+                placeholder="Enter the request description">
+          </div>
+
+          <br>
+
+          <div class="box-footer">
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

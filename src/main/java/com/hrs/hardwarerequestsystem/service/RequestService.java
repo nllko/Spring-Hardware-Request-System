@@ -22,4 +22,12 @@ public class RequestService {
     return (ArrayList<Request>) requestRepository.findAll();
   }
 
+  public Request getRequestById(Integer id) {
+    return requestRepository.findById(id).get();
+  }
+
+  public Request updateRequest(Request request){
+    return requestRepository.save(request);
+  }
+
 }

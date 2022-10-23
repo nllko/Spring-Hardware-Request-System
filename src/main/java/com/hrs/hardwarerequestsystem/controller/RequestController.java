@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
@@ -38,5 +39,24 @@ public class RequestController {
     return "create_request";
   }
 
+  @GetMapping("/requests/edit/{id}")
+  public String editRequestForm(@PathVariable Integer id, Model model) {
+    model.addAttribute("request",requestService.getRequestById(id));
+    return "edit_request";
+  }
+
+  @PostMapping("/requests/{id}")
+  public String updateRequest(@PathVariable Integer id, @ModelAttribute("request") Request request, Model model) {
+    Request existingRequest = requestService.getRequestById(id);
+    existingRequest.setId(id);
+    existingRequest.setName(request.getName());
+    existingRequest.setParameters(request.getParameters());
+    existingRequest.setType(request.getType());
+    existingRequest.setDescription(request.getDescription());
+    existingRequest.setCreatedAt(LocalDateTime.now());
+
+    requestService.updateRequest(existingRequest);
+    return "redirect:/requests";
+  }
 
 }
