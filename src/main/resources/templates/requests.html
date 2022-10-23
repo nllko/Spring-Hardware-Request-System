@@ -38,6 +38,7 @@
     <td th:text="${request.type}"></td>
     <td th:text="${request.parameters}"></td>
     <td th:text="${request.description}"></td>
+    <td th:text="${#temporals.format(request.createdAt, 'dd/MMM/yyyy HH:mm')}"></td>
   </tr>
   </tbody>
 </table>

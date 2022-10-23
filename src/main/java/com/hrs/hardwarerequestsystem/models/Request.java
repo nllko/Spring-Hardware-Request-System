@@ -1,5 +1,7 @@
 package com.hrs.hardwarerequestsystem.models;
 
+import java.time.LocalDateTime;
+
 public class Request {
 
   private int id;
@@ -7,6 +9,7 @@ public class Request {
   private String type;
   private String parameters;
   private String description;
+  private LocalDateTime createdAt;
 
   public Request(String name, String type, String parameters, String description) {
     this.name = name;
@@ -56,5 +59,13 @@ public class Request {
 
   public void setDescription(String description) {
     this.description = description;
+  }
+
+  public LocalDateTime getCreatedAt() {
+    return createdAt;
+  }
+
+  public void setCreatedAt(LocalDateTime createdAt) {
+    this.createdAt = createdAt;
   }
 }

@@ -2,7 +2,7 @@ package com.hrs.hardwarerequestsystem.controller;
 
 import com.hrs.hardwarerequestsystem.models.Request;
 import com.hrs.hardwarerequestsystem.service.RequestService;
-import org.springframework.boot.Banner.Mode;
+import java.time.LocalDateTime;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,6 +20,8 @@ public class RequestController {
 
   @PostMapping("/requests")
   public String addRequest(@ModelAttribute("request") Request request) {
+    request.setId(requestService.generateId());
+    request.setCreatedAt(LocalDateTime.now());
     requestService.addRequest(request);
     return "redirect:/requests";
   }

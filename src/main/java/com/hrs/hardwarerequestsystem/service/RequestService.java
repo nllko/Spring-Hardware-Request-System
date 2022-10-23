@@ -21,4 +21,8 @@ public class RequestService {
   public ArrayList<Request> getAllRequests() {
     return requestRepository.getAllRequests();
   }
+
+  public Integer generateId() {
+    return (int) ((Math.random() * 9000000) + 1000000);
+  }
 }
