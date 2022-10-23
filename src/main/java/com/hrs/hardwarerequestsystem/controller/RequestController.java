@@ -2,9 +2,12 @@ package com.hrs.hardwarerequestsystem.controller;
 
 import com.hrs.hardwarerequestsystem.models.Request;
 import com.hrs.hardwarerequestsystem.service.RequestService;
+import org.springframework.boot.Banner.Mode;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class RequestController {
@@ -15,9 +18,8 @@ public class RequestController {
     this.requestService = requestService;
   }
 
-  @GetMapping("/request")
-  public String addRequest() {
-    Request request = new Request(0,"Computer for Alex","Computer","Geforce 1060","Give him a cool pc :)");
+  @PostMapping("/requests")
+  public String addRequest(@ModelAttribute("request") Request request) {
     requestService.addRequest(request);
     return "redirect:/requests";
   }
@@ -26,6 +28,13 @@ public class RequestController {
   public String listRequests(Model model) {
     model.addAttribute("requests",requestService.getAllRequests());
     return "requests";
+  }
+
+  @GetMapping("/requests/new")
+  public String createRequestForm(Model model) {
+    Request request = new Request();
+    model.addAttribute("request",request);
+    return "create_request";
   }
 
 

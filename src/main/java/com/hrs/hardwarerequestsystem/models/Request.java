@@ -8,12 +8,14 @@ public class Request {
   private String parameters;
   private String description;
 
-  public Request(int id, String name, String type, String parameters, String description) {
-    this.id = id;
+  public Request(String name, String type, String parameters, String description) {
     this.name = name;
     this.type = type;
     this.parameters = parameters;
     this.description = description;
+  }
+
+  public Request() {
   }
 
   public int getId() {
