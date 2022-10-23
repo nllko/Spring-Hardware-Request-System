@@ -59,4 +59,10 @@ public class RequestController {
     return "redirect:/requests";
   }
 
+  @GetMapping("/requests/{id}")
+  public String deleteRequest(@PathVariable Integer id) {
+    requestService.deleteById(id);
+    return "redirect:/requests";
+  }
+
 }

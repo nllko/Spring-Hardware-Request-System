@@ -26,8 +26,12 @@ public class RequestService {
     return requestRepository.findById(id).get();
   }
 
-  public Request updateRequest(Request request){
-    return requestRepository.save(request);
+  public void updateRequest(Request request){
+    requestRepository.save(request);
+  }
+
+  public void deleteById(Integer id) {
+    requestRepository.deleteById(id);
   }
 
 }

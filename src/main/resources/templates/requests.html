@@ -42,6 +42,7 @@
     <td th:text="${#temporals.format(request.createdAt, 'dd/MMM/yyyy HH:mm')}"></td>
     <td>
       <a th:href="@{/requests/edit/{id}(id=${request.id})}" class = "btn btn-primary">✏</a>
+      <a th:href = "@{/requests/{id}(id=${request.id})}" class = "btn btn-danger">🗑</a>
     </td>
   </tr>
   </tbody>
