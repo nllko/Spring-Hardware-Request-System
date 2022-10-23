@@ -1,14 +1,33 @@
 package com.hrs.hardwarerequestsystem.models;
 
 import java.time.LocalDateTime;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
+@Entity
 public class Request {
 
+  @Id
+  @GeneratedValue(strategy = GenerationType.AUTO, generator = "request_id_sequence")
+  @Column(name = "ID")
   private int id;
+
+  @Column(name = "NAME")
   private String name;
+
+  @Column(name = "TYPE")
   private String type;
+
+  @Column(name = "PARAMETERS")
   private String parameters;
+
+  @Column(name = "DESCRIPTION")
   private String description;
+
+  @Column(name = "CREATED_AT")
   private LocalDateTime createdAt;
 
   public Request(String name, String type, String parameters, String description) {

@@ -20,7 +20,6 @@ public class RequestController {
 
   @PostMapping("/requests")
   public String addRequest(@ModelAttribute("request") Request request) {
-    request.setId(requestService.generateId());
     request.setCreatedAt(LocalDateTime.now());
     requestService.addRequest(request);
     return "redirect:/requests";

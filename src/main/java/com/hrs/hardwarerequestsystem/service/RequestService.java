@@ -15,14 +15,11 @@ public class RequestService {
   }
 
   public void addRequest(Request request) {
-    requestRepository.addRequest(request);
+    requestRepository.save(request);
   }
 
   public ArrayList<Request> getAllRequests() {
-    return requestRepository.getAllRequests();
+    return (ArrayList<Request>) requestRepository.findAll();
   }
 
-  public Integer generateId() {
-    return (int) ((Math.random() * 9000000) + 1000000);
-  }
 }
