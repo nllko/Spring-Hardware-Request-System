@@ -28,54 +28,28 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
-      <h3 class="text-center mt-3">Update request</h3>
       <div class="card-body">
         <form th:action="@{/requests/{id} (id=${request.id})}" th:object="${request}" method="post">
-          <div class="form-group">
-            <label>Request name</label>
-            <input
-                type="text"
-                name="name"
-                th:field="*{name}"
-                class="form-control"
-                placeholder="Enter the request name" disabled>
-          </div>
+          <h3 class="text-center mt-3 mb-3" th:text="${request.name}">Request name</h3>
 
-          <div class="form-group">
-            <label>Type of hardware</label>
-            <select class="form-control" th:field="*{type}">
-              <option value="PC">PC</option>
-              <option value="Laptop">Laptop</option>
-              <option value="Webcam">Webcam</option>
-              <option value="Mouse">Mouse</option>
-              <option value="Keyboard">Keyboard</option>
-            </select>
+          <div class="d-flex">
+            <div>
+              <h6>Type of hardware</h6>
+              <p class="card-text" th:text="${request.type}">Type</p>
+            </div>
+            <div class="ms-auto">
+              <h6>Hardware parameters</h6>
+              <p class="card-text" th:text="${request.parameters}">Parameters</p>
+            </div>
           </div>
+          <br>
 
-          <div class="form-group">
-            <label>Hardware parameters</label>
-            <input
-                type="text"
-                name="parameters"
-                th:field="*{parameters}"
-                class="form-control"
-                placeholder="Enter the parameters" disabled>
-          </div>
+          <h6>Description</h6>
+          <p class="card-text" th:text="${request.description}">Parameters</p>
 
-          <div class="form-group">
-            <label>Description</label>
-            <input
-                type="text"
-                name="description"
-                th:field="*{description}"
-                class="form-control"
-                placeholder="Enter the request description" disabled>
-          </div>
-
-          <div class="form-group">
-            <label>Created At</label>
-            <input type="text" class="form-control" disabled th:field="*{createdAt}">
-          </div>
+          <h6>Created At</h6>
+          <p class="card-text"
+             th:text="${#temporals.format(request.createdAt, 'dd/MMM/yyyy HH:mm')}">Created At</p>
 
           <div class="form-group">
             <label>Change status</label>
@@ -100,8 +74,8 @@
           <br>
 
           <div class="box-footer d-flex">
-            <button type="submit" class="btn btn-primary">Submit</button>
-            <a th:href="@{/requests}" class="btn btn-danger ms-auto">Cancel</a>
+            <button type="submit" class="btn btn-primary" th:if="${request.status=='Pending'}">Submit</button>
+            <a th:href="@{/requests}" class="btn btn-danger ms-auto">Go back</a>
           </div>
 
         </form>
