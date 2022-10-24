@@ -10,5 +10,6 @@ CREATE TABLE request
     type VARCHAR(255) NOT NULL,
     parameters VARCHAR(255) NOT NULL,
     description VARCHAR(255) NOT NULL,
-    created_at TIMESTAMP
+    created_at TIMESTAMP,
+    status VARCHAR(255) NOT NULL
 );

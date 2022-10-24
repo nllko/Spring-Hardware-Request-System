@@ -11,7 +11,9 @@
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <a class="navbar-brand">Hardware Request System</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+  <button class="navbar-toggler" type="button" data-toggle="collapse"
+          data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
+          aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
@@ -36,10 +38,10 @@
                 name="name"
                 th:field="*{name}"
                 class="form-control"
-                placeholder="Enter the request name">
+                placeholder="Enter the request name" disabled>
           </div>
 
-          <div class="form=group">
+          <div class="form-group">
             <label>Type of hardware</label>
             <select class="form-control" th:field="*{type}">
               <option value="PC">PC</option>
@@ -57,7 +59,7 @@
                 name="parameters"
                 th:field="*{parameters}"
                 class="form-control"
-                placeholder="Enter the parameters">
+                placeholder="Enter the parameters" disabled>
           </div>
 
           <div class="form-group">
@@ -67,13 +69,39 @@
                 name="description"
                 th:field="*{description}"
                 class="form-control"
-                placeholder="Enter the request description">
+                placeholder="Enter the request description" disabled>
+          </div>
+
+          <div class="form-group">
+            <label>Created At</label>
+            <input type="text" class="form-control" disabled th:field="*{createdAt}">
+          </div>
+
+          <div class="form-group">
+            <label>Change status</label>
+            <br>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                     id="inlineRadio1" value="Pending" th:field="*{status}" disabled>
+              <label class="form-check-label" for="inlineRadio1">Pending</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                     id="inlineRadio2" value="Approve" th:field="*{status}">
+              <label class="form-check-label" for="inlineRadio2">Approve</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                     id="inlineRadio3" value="Reject" th:field="*{status}">
+              <label class="form-check-label" for="inlineRadio3">Reject</label>
+            </div>
           </div>
 
           <br>
 
-          <div class="box-footer">
+          <div class="box-footer d-flex">
             <button type="submit" class="btn btn-primary">Submit</button>
+            <a th:href="@{/requests}" class="btn btn-danger ms-auto">Cancel</a>
           </div>
 
         </form>

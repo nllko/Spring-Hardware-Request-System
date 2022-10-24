@@ -22,6 +22,7 @@ public class RequestController {
   @PostMapping("/requests")
   public String addRequest(@ModelAttribute("request") Request request) {
     request.setCreatedAt(LocalDateTime.now());
+    request.setStatus("Pending");
     requestService.addRequest(request);
     return "redirect:/requests";
   }
@@ -48,13 +49,7 @@ public class RequestController {
   @PostMapping("/requests/{id}")
   public String updateRequest(@PathVariable Integer id, @ModelAttribute("request") Request request, Model model) {
     Request existingRequest = requestService.getRequestById(id);
-    existingRequest.setId(id);
-    existingRequest.setName(request.getName());
-    existingRequest.setParameters(request.getParameters());
-    existingRequest.setType(request.getType());
-    existingRequest.setDescription(request.getDescription());
-    existingRequest.setCreatedAt(LocalDateTime.now());
-
+    existingRequest.setStatus(request.getStatus());
     requestService.updateRequest(existingRequest);
     return "redirect:/requests";
   }

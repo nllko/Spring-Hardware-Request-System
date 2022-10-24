@@ -30,6 +30,9 @@ public class Request {
   @Column(name = "CREATED_AT")
   private LocalDateTime createdAt;
 
+  @Column(name = "STATUS")
+  private String status;
+
   public Request(String name, String type, String parameters, String description) {
     this.name = name;
     this.type = type;
@@ -86,5 +89,13 @@ public class Request {
 
   public void setCreatedAt(LocalDateTime createdAt) {
     this.createdAt = createdAt;
+  }
+
+  public String getStatus() {
+    return status;
+  }
+
+  public void setStatus(String status) {
+    this.status = status;
   }
 }

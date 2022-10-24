@@ -39,7 +39,7 @@
                 placeholder="Enter the request name">
           </div>
 
-          <div class="form=group">
+          <div class="form-group">
             <label>Type of hardware</label>
             <select class="form-control" th:field="*{type}">
               <option value="PC">PC</option>
@@ -72,8 +72,9 @@
 
           <br>
 
-          <div class="box-footer">
+          <div class="box-footer d-flex">
             <button type="submit" class="btn btn-primary">Submit</button>
+            <a th:href="@{/requests}" class="btn btn-danger ms-auto">Cancel</a>
           </div>
 
         </form>
