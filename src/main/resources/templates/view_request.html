@@ -76,6 +76,8 @@
             <label class="form-check-label" th:text="${request.status}"></label>
           </div>
 
+          <p th:if="${validateStatus}" class="alert alert-danger">You need to change the status</p>
+
           <br>
 
           <div class="box-footer d-flex">
