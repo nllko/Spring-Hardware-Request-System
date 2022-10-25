@@ -41,9 +41,9 @@ public class RequestController {
   }
 
   @GetMapping("/requests/edit/{id}")
-  public String editRequestForm(@PathVariable Integer id, Model model) {
+  public String viewRequestForm(@PathVariable Integer id, Model model) {
     model.addAttribute("request",requestService.getRequestById(id));
-    return "edit_request";
+    return "view_request";
   }
 
   @PostMapping("/requests/{id}")
