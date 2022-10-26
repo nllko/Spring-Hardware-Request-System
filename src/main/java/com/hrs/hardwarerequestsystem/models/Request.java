@@ -27,11 +27,12 @@ public class Request {
 
   @Column(name = "PARAMETERS")
   @NotEmpty(message = "Parameters fields should not be empty")
+  @Size(min = 1, max = 100,message = "The parameters should be between 1 and 100 characters")
   private String parameters;
 
   @Column(name = "DESCRIPTION")
-  @Size(min = 1, max = 100,message = "The description should be between 1 and 100 characters")
   @NotEmpty(message = "Description field should not be empty")
+  @Size(min = 1, max = 100,message = "The description should be between 1 and 100 characters")
   private String description;
 
   @Column(name = "CREATED_AT")
