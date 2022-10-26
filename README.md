@@ -1,4 +1,4 @@
-![GIF](readme\idk.gif)
+![GIF](/readme/idk.gif)
 
 #Hardware Request System
 
