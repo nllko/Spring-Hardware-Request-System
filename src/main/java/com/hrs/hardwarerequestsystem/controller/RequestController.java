@@ -21,6 +21,7 @@ public class RequestController {
   @PostMapping("/requests")
   public String addRequest(@ModelAttribute("request") @Valid Request request,
       BindingResult bindingResult) {
+    //ja pieprasījumā ir kļūdas, tas paliks šajā lapā un parādīs tās
     if (bindingResult.hasErrors()) {
       return "create_request";
     }
@@ -36,6 +37,7 @@ public class RequestController {
 
   @GetMapping("/requests/new")
   public String createRequestForm(Model model) {
+    //izveidot pieprasījuma objektu, lai turētu pieprasījuma veidlapas datus
     Request request = new Request();
     model.addAttribute("request", request);
     return "create_request";
@@ -43,6 +45,7 @@ public class RequestController {
 
   @GetMapping("/requests/edit/{id}")
   public String viewRequestForm(@PathVariable Integer id, Model model) {
+    //iegūt pieprasījuma objektu, lai parādītu pieprasījuma veidlapas datus
     model.addAttribute("request", requestService.getRequestById(id));
     return "view_request";
   }
@@ -51,9 +54,12 @@ public class RequestController {
   public String updateRequest(@PathVariable Integer id, @ModelAttribute("request") Request request,
       Model model) {
     Request existingRequest = requestService.getRequestById(id);
+    //ja pieprasījuma statuss nav mainījies, tas netiks atjaunināts datu bāzē
     existingRequest.setStatus(request.getStatus());
     if (existingRequest.getStatus().equals("Pending")) {
+      //pievieno pieprasījuma objektu, lai šī objekta dati lapā netiktu izdzēsti
       model.addAttribute("request", existingRequest);
+      //dod vērtību true, lai lapā tiktu parādīta kļūda
       model.addAttribute("validateStatus", true);
       return "view_request";
     }
