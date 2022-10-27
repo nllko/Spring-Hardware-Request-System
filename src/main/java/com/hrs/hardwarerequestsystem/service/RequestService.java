@@ -12,8 +12,8 @@ public class RequestService {
 
   private final RequestRepository requestRepository;
 
-  public void addRequest(Request request) {
-    requestRepository.save(request);
+  public Request addRequest(Request request) {
+    return requestRepository.save(request);
   }
 
   public List<Request> getAllRequests() {
@@ -24,8 +24,8 @@ public class RequestService {
     return requestRepository.findById(id).get();
   }
 
-  public void updateRequest(Request request) {
-    requestRepository.save(request);
+  public Request updateRequest(Request request) {
+   return requestRepository.save(request);
   }
 
   public void deleteById(Integer id) {
