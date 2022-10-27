@@ -76,12 +76,15 @@
             <label class="form-check-label" th:text="${request.status}"></label>
           </div>
 
-          <p th:if="${validateStatus}" class="alert alert-danger mt-2">You need to change the status before submitting</p>
+          <p th:if="${validateStatus}" class="alert alert-danger mt-2">You need to change the status
+            before submitting</p>
 
           <br>
 
           <div class="box-footer d-flex">
-            <button type="submit" class="btn btn-primary" th:if="${request.status=='Pending'}">Submit</button>
+            <button type="submit" class="btn btn-primary" th:if="${request.status=='Pending'}">
+              Submit
+            </button>
             <a th:href="@{/requests}" class="btn btn-danger ms-auto">Go back</a>
           </div>
 

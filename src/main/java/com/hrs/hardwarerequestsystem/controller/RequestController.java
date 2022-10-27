@@ -3,6 +3,7 @@ package com.hrs.hardwarerequestsystem.controller;
 import com.hrs.hardwarerequestsystem.models.Request;
 import com.hrs.hardwarerequestsystem.service.RequestService;
 import javax.validation.Valid;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -12,13 +13,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
+@AllArgsConstructor
 public class RequestController {
 
   private final RequestService requestService;
-
-  public RequestController(RequestService requestService) {
-    this.requestService = requestService;
-  }
 
   @PostMapping("/requests")
   public String addRequest(@ModelAttribute("request") @Valid Request request,
@@ -55,7 +53,7 @@ public class RequestController {
     Request existingRequest = requestService.getRequestById(id);
     existingRequest.setStatus(request.getStatus());
     if (existingRequest.getStatus().equals("Pending")) {
-      model.addAttribute("request",existingRequest);
+      model.addAttribute("request", existingRequest);
       model.addAttribute("validateStatus", true);
       return "view_request";
     }

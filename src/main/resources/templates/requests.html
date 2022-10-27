@@ -12,47 +12,51 @@
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <a class="navbar-brand">Hardware Request System</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+  <button class="navbar-toggler" type="button" data-toggle="collapse"
+          data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
+          aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
-      <a class="nav-item nav-link active" th:href="@{/requests}">Show all requests <span class="sr-only">(current)</span></a>
+      <a class="nav-item nav-link active" th:href="@{/requests}">Show all requests <span
+          class="sr-only">(current)</span></a>
       <a class="nav-item nav-link" th:href="@{/requests/new}">Create new request</a>
     </div>
   </div>
 </nav>
 <br>
 <div class="container">
-    <div class="border rounded">
-      <table class="table table-light table-striped">
-        <thead>
-        <tr>
-          <th scope="col">Name</th>
-          <th scope="col">Type</th>
-          <th scope="col">Parameters</th>
-          <th scope="col">Description</th>
-          <th scope="col">Created At</th>
-          <th scope="col">Status</th>
-          <th scope="col">Actions</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="request: ${requests}">
-          <td th:text="${request.name}"></td>
-          <td th:text="${request.type}"></td>
-          <td th:text="${request.parameters}"></td>
-          <td th:text="${request.description}"></td>
-          <td th:text="${#temporals.format(request.createdAt, 'dd/MMM/yyyy HH:mm')}"></td>
-          <td th:text="${request.status}"></td>
-          <td>
-            <a th:href="@{/requests/edit/{id}(id=${request.id})}" class = "btn btn-primary">View request</a>
-            <a th:href = "@{/requests/{id}(id=${request.id})}" class = "btn btn-danger">Delete request</a>
-          </td>
-        </tr>
-        </tbody>
-      </table>
-    </div>
+  <div class="border rounded">
+    <table class="table table-light table-striped">
+      <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Type</th>
+        <th scope="col">Parameters</th>
+        <th scope="col">Description</th>
+        <th scope="col">Created At</th>
+        <th scope="col">Status</th>
+        <th scope="col">Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="request: ${requests}">
+        <td th:text="${request.name}"></td>
+        <td th:text="${request.type}"></td>
+        <td th:text="${request.parameters}"></td>
+        <td th:text="${request.description}"></td>
+        <td th:text="${#temporals.format(request.createdAt, 'dd/MMM/yyyy HH:mm')}"></td>
+        <td th:text="${request.status}"></td>
+        <td>
+          <a th:href="@{/requests/edit/{id}(id=${request.id})}" class="btn btn-primary">View
+            request</a>
+          <a th:href="@{/requests/{id}(id=${request.id})}" class="btn btn-danger">Delete request</a>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
 </body>
 </html>
